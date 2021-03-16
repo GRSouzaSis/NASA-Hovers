@@ -1,7 +1,5 @@
 import React from 'react';
-import { Dimensions, ImageBackground, View } from 'react-native';
-
-
+import { Dimensions, ImageBackground, Text, View } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
