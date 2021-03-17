@@ -1,0 +1,58 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "jpoissonnier.vscode-styled-components",
+      "msjsdiag.vscode-react-native",
+      "PKief.material-icon-theme",
+      "rocketseat.rocketseatreactnative",
+      "gruntfuggly.todo-tree",
+      "hediet.vscode-drawio",
+      "rafaelsalguero.csharp2ts"
+    ]
+  },
+  "settings": {
+    "explorer.compactFolders": false,
+    "workbench.colorCustomizations": {
+      "statusBar.background": "#bb4824"
+    },
+    "files.exclude": {
+      "build": true,
+      "node_modules": true,
+      ".vscode": true,
+      ".readme_content": true
+    },
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "Attach",
+        "cwd": "${workspaceFolder}",
+        "type": "reactnative",
+        "request": "attach"
+      }
+    ],
+    "compounds": []
+  }
+}

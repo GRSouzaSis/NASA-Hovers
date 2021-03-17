@@ -3,8 +3,8 @@
     "es2021": true
   },
   "extends": [
-    "plugin:react/recommended",
     "airbnb",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
@@ -30,6 +30,7 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-filename-extension": [
       1,
       {
