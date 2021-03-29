@@ -1,48 +1,71 @@
-import React, { useEffect } from 'react';
-import { Button, Dimensions, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
-import nasaLogo from '../../assets/images/nasa-mars-logo.png';
-
+import React, { useEffect, useState } from 'react';
 import { ApiService } from '../../services/ApiService'
+import { Photos } from './types';
 
-const { width, height } = Dimensions.get('window');
-
-
+import { Container, BackImage, ContainerBody, ContainerHeader } from './styles';
+import { Button, View } from 'react-native';
+import palette from '../../assets/theme/palette';
+import Circle from '../../components/Circle/indext';
+import { TextDescription } from '../../components/Circle/styles';
 
 const Home: React.FC = () => {
+  const [photo, setPhoto] = useState<Photos[]>([])
+  const [loading, setLoading] = useState(false);
+  const api = new ApiService();
 
-const api = new ApiService();
+  useEffect(() => {
+    nameUrl();
+  }, [])
 
-useEffect(()=>{
-  nameUrl();
-},[])
+  async function nameUrl() {
+    api.getWeather();
+  }
 
-async function nameUrl() {
-  let hover = 'curiosity'
-  let sol = 1000
-  let camera = 'fhaz'
-  const result = await api.getMarsPhoto(hover, sol, camera);
-
-  console.log("Index result", result);
-}
+  // async function nameUrl() {
+  //   let hover = 'curiosity'
+  //   let sol = 1000
+  //   let camera = 'fhaz'
+  //   setLoading(true);
+  //     const result = await api.getMarsPhoto(hover, sol, camera);
+  //     setPhoto(result);
+  //   setLoading(false);
+  // }
+  function showDescription(descri: string) {
+    console.log("clicou", descri);
+  }
 
   return (
-    <View style={{flex: 1, padding: 16}}>
+    <Container>
+      <BackImage source={require('../../assets/images/planetMars.jpg')} resizeMode='cover'>
+          <ContainerHeader >
+            <Circle
+              description='Spirit'
+              index={1}
+              onPress={showDescription}
+              uri="https://i.pinimg.com/originals/6e/27/21/6e2721374bd9f50239276d7d7ca15ba8.jpg">
+            </Circle>
+            <Circle
+              description='Curiosity'
+              index={1}
+              onPress={showDescription}
+              uri="https://www.spaceanswers.com/wp-content/uploads/2013/01/Curiosity-Power.jpg">
+            </Circle>
+            <Circle
+              description='Opportunity'
+              index={1}
+              onPress={showDescription}
+              uri="https://img.ibxk.com.br//2019/02/13/13200647780273.jpg?w=1200&h=675&mode=crop&scale=both">
+            </Circle>
+          </ContainerHeader>
 
-     <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-        backgroundColor: '#fff',
-      }}>
-      <ImageBackground
-        source={nasaLogo}
-        resizeMode="contain"
-        style={{ width: width - 16, height: height - 16 }}
-      />
-    </View>
-    </View>
+          <ContainerBody>
+
+
+        </ContainerBody>
+
+      </BackImage>
+    </Container>
+
   );
 };
 

@@ -30,4 +30,33 @@ export class ApiService {
       return { isSuccess: false };
     }
   }
+
+  async getWeather(){
+    let url = `${API_BASE_URL}insight_weather/?api_key=${PRIVATE_KEY}&feedtype=json&ver=1.0`
+    const resp = await fetch(url)
+    const respJson = await resp.json();
+
+    console.log(respJson);
+
+    // fetch(url)
+    // .then(res => res.json())
+    // .then(data =>{
+    //   const{
+    //     sol_keys,
+    //     validity_checks,
+    //     ...solData
+    //   } = data
+    //  return Object.entries(solData).map(([sol, data])=>{
+    //     return{
+    //       sol: sol,
+    //       maxTemp: data.AT.mx,
+    //       minTemp: data.AT.mn,
+    //       windSpeed: data.HWS.av,
+    //       windDirectionDegrees: data.WD.most_common.compass_degress,
+    //       windDirectionCardinal: data.WD.most_common.compass_point,
+    //       date: new Date(data.First_UTC)
+    //     }
+    //   })
+    // })
+  }
 }
