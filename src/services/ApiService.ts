@@ -33,11 +33,31 @@ export class ApiService {
 
   async getWeather(){
     let url = `${API_BASE_URL}insight_weather/?api_key=${PRIVATE_KEY}&feedtype=json&ver=1.0`
-    const resp = await fetch(url)
-    const respJson = await resp.json();
+    // const resp = await fetch(url)
+    // const respJson = await resp.json();
 
-    console.log(respJson);
-
+    // console.log(respJson);
+    return fetch(url)
+		.then(res => res.json())
+		.then(data => {
+			const {
+				sol_keys,
+				validity_checks,
+				...solData
+			} = data
+      console.log(data)
+			// return Object.entries(solData).map(([sol, data]) => {
+			// 	return {
+			// 		sol: sol,
+			// 		maxTemp: data.AT.mx,
+			// 		minTemp: data.AT.mn,
+			// 		windSpeed: data.HWS.av,
+			// 		windDirectionDegrees: data.WD.most_common.compass_degrees,
+			// 		windDirectionCardinal: data.WD.most_common.compass_point,
+			// 		date: new Date(data.First_UTC)
+			// 	}
+			// })
+		})
     // fetch(url)
     // .then(res => res.json())
     // .then(data =>{

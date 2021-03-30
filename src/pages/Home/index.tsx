@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { ApiService } from '../../services/ApiService'
 import { Photos } from './types';
-
-import { Container, BackImage, ContainerBody, ContainerHeader } from './styles';
-import { Button, View } from 'react-native';
+import { Button, Switch, View } from 'react-native';
 import palette from '../../assets/theme/palette';
 import Circle from '../../components/Circle/indext';
-import { TextDescription } from '../../components/Circle/styles';
+
+import {
+  Container,
+  BackImage,
+  ContainerBody,
+  ContainerHeader,
+
+} from './styles';
+import Temperature from '../../components/Temperature';
+
 
 const Home: React.FC = () => {
   const [photo, setPhoto] = useState<Photos[]>([])
@@ -14,7 +21,7 @@ const Home: React.FC = () => {
   const api = new ApiService();
 
   useEffect(() => {
-    nameUrl();
+    // nameUrl();
   }, [])
 
   async function nameUrl() {
@@ -36,36 +43,38 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <BackImage source={require('../../assets/images/planetMars.jpg')} resizeMode='cover'>
-          <ContainerHeader >
-            <Circle
-              description='Spirit'
-              index={1}
-              onPress={showDescription}
-              uri="https://i.pinimg.com/originals/6e/27/21/6e2721374bd9f50239276d7d7ca15ba8.jpg">
-            </Circle>
-            <Circle
-              description='Curiosity'
-              index={1}
-              onPress={showDescription}
-              uri="https://www.spaceanswers.com/wp-content/uploads/2013/01/Curiosity-Power.jpg">
-            </Circle>
-            <Circle
-              description='Opportunity'
-              index={1}
-              onPress={showDescription}
-              uri="https://img.ibxk.com.br//2019/02/13/13200647780273.jpg?w=1200&h=675&mode=crop&scale=both">
-            </Circle>
-          </ContainerHeader>
+      <BackImage source={require('../../assets/images/mars_home.jpg')} resizeMode='cover'>
+        <ContainerHeader >
+          <Circle
+            description='Spirit'
+            index={1}
+            onPress={showDescription}
+            uri="https://i.pinimg.com/originals/6e/27/21/6e2721374bd9f50239276d7d7ca15ba8.jpg"
+          />
 
-          <ContainerBody>
+          <Circle
+            description='Curiosity'
+            index={1}
+            onPress={showDescription}
+            uri="https://www.spaceanswers.com/wp-content/uploads/2013/01/Curiosity-Power.jpg"
+          />
 
+          <Circle
+            description='Opportunity'
+            index={1}
+            onPress={showDescription}
+            uri="https://img.ibxk.com.br//2019/02/13/13200647780273.jpg?w=1200&h=675&mode=crop&scale=both"
+          />
+
+        </ContainerHeader>
+
+        <ContainerBody>
+          <Temperature />
 
         </ContainerBody>
 
       </BackImage>
     </Container>
-
   );
 };
 

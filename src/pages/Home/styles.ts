@@ -5,8 +5,6 @@ export const Container = styled.View`
   flex: 1;
 `;
 
-
-
 export const ContainerHeader = styled.View`
   flex-direction: row;
   justify-content: space-around;
@@ -20,9 +18,9 @@ export const BackImage = styled.ImageBackground`
 `;
 
 export const ContainerBody = styled.View`
-  flex: 1;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin-top: 30%;
 `;
 
 
